@@ -1,0 +1,10 @@
+username,password,name,maildir,quota,created,modified,active,domain,local_part
+info@myspeedwayracer.com,$1$bAX90Nmw$Rs/yWBJBBX986DGvM.QSz1,info,myspeedwayracer.com/info/,0,now(),now(),TRUE,myspeedwayracer.com,info
+mattkrause@myspeedwayracer.com,$1$CDkLCel7$7az9.1HQg1Smba19l3XN60,Matt Krause,myspeedwayracer.com/mattkrause/,0,now(),now(),TRUE,myspeedwayracer.com,mattkrause
+nakagaki@myspeedwayracer.com,$1$2P7cRIKT$Zo8XMPG3s.tTtXoUhNA.P.,nakagaki,myspeedwayracer.com/nakagaki/,0,now(),now(),TRUE,myspeedwayracer.com,nakagaki
+postmaster@myspeedwayracer.com,$1$cTCPBpxK$t33laI7AaqgM7W3.fHpV51,Postmaster,myspeedwayracer.com/postmaster/,0,now(),now(),TRUE,myspeedwayracer.com,postmaster
+
+
+
+
+./postfixadmin-cli mailbox add tester2@myspeedwayracer2.com --password Inter123 --password2 Inter123 --name Tester2 --quota 0 --active
