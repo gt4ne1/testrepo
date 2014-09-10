@@ -37,7 +37,7 @@
 #
 # To Do:
 #	*Rsync wild cards so don't have to sync per user
-#   *Rsync directories starting with . like .Trash, .Spam, .Drafts
+#   
 #
 #
 #
@@ -46,13 +46,18 @@
 #
 #
 
+# Change ownership of user's mailbox to mail:mailsync
+chown -R mail:mailsync /data/mail/vmail/myspeedwayracer.com/
+
+# Change permissions of mailbox directories to 770
+find /data/mail/vmail -type d -exec chmod 770 {} +
 
 # Run rsync as mailsync user excluding files/directories starting with: dovecot and lastauth.  membermail01 uses different directory structure than
 #		mail.alptec.net 
-su -c "rsync -avP --delete --exclude=dovecot* --exclude=lastauth mailsync@mail.alptec.net:/home/vpopmail/domains/myspeedwayracer.com/mattkrause/Maildir/* /data/mail/vmail/myspeedwayracer.com/mattkrause/" mailsync
+su -c "rsync -avP --delete --exclude=dovecot* --exclude=lastauth mailsync@mail.alptec.net:/home/vpopmail/domains/myspeedwayracer.com/mattkrause/Maildir/.[^.]* /data/mail/vmail/myspeedwayracer.com/mattkrause/" mailsync
 
 # Rsync'd files will be owned by mailsync:mailsync.  Need to change ownership to mail:mail
-chown -R mail:mail /data/mail/vmail/myspeedwayracer.com/
+chown -R mail:mail /data/mail/vmail/
 
 # Rsync'd files will be chmod 760. Need to chmod of directories to 700 and mailmessage files to 600.  For some reason the \; isn't needed here.
 find /data/mail/vmail -type d -exec chmod 700 {} +
